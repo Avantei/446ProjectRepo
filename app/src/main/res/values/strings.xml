@@ -12,4 +12,5 @@
     <string name="title_activity_user">UserActivity</string>
     <string name="groups_tab_name">Groups</string>
     <string name="profile_tab_name">Profile</string>
+    <string name="new_group_hint">New Group</string>
 </resources>

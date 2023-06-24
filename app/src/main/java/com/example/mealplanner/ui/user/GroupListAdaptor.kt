@@ -1,5 +1,6 @@
 package com.example.mealplanner.ui.user
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +16,12 @@ class GroupListAdaptor: ListAdapter<Group, GroupListAdaptor.ViewHolder>(DiffCall
     // ViewHolder is a container for an item in the view
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView = itemView.findViewById<TextView>(R.id.textView)
-//        private val imageButton = itemView.findViewById<ImageButton>(R.id.imageButton)
+        private val imageButton = itemView.findViewById<ImageButton>(R.id.imageButton)
         private var currentGroup: Group? = null
         init {
-//            imageButton.setOnClickListener{
-
-//            }
+            imageButton.setOnClickListener{
+                Log.d("PETER", currentGroup?.name ?: "")
+            }
         }
         // function called to update the content of a list
         fun bind(group: Group) {
@@ -28,7 +29,7 @@ class GroupListAdaptor: ListAdapter<Group, GroupListAdaptor.ViewHolder>(DiffCall
             nameTextView.text = group.name
         }
     }
-    // Create new views (invoked by the layout manager)
+    // Called when a new item is created
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(parent.context)
@@ -36,7 +37,7 @@ class GroupListAdaptor: ListAdapter<Group, GroupListAdaptor.ViewHolder>(DiffCall
         return ViewHolder(view)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // Called to update an item given an index
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val group = getItem(position)
         holder.bind(group);

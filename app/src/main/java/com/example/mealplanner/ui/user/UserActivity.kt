@@ -25,6 +25,5 @@ class UserActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
         // Create ViewModel
         viewModel = ViewModelProvider(this, UserViewModel.Factory)[UserViewModel::class.java]
-        viewModel.setText("VM loaded")
     }
 }

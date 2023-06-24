@@ -5,28 +5,34 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.mealplanner.data.UserRepository
 
 data class Group(
     val name: String
 )
 
 class UserViewModel : ViewModel() {
-    private val _text = MutableLiveData<String>()
-    val text: LiveData<String> = _text
-
-    private val _groups = MutableLiveData<List<Group>>(listOf(Group("Group A")
-        , Group("Group B"), Group("Group C")))
+    // Create repository for getting data
+    private val repo: UserRepository = UserRepository()
+    // Create Mutable and Live data for view
+    private val _groups = MutableLiveData<List<Group>>(listOf())
     val groups: LiveData<List<Group>> = _groups
 
-    fun setText(content: String) {
-        _text.value = content
+    // Retrieve data on create
+    init {
+        getGroups()
+    }
+    
+    fun addGroup(name: String) {
+        val result = repo.addGroup(name)
+        if (result) {
+            getGroups()
+        }
     }
 
-    fun addGroup(name: String) {
-        Log.d("PETER", name)
-        val list = _groups.value?.toMutableList()
-        list?.add(Group(name))
-        this._groups.postValue(list)
+    fun getGroups() {
+        val result = repo.getGroups()
+        this._groups.postValue(result.map { Group(it) })
     }
 
     companion object {
