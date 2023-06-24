@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.mealplanner.databinding.FragmentProfileBinding
+import com.example.mealplanner.databinding.FragmentGroupsBinding
 
 class GroupsFragment : Fragment() {
 
-    private var _binding: FragmentProfileBinding? = null
+    private var _binding: FragmentGroupsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: UserViewModel
 
@@ -26,13 +26,27 @@ class GroupsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentGroupsBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val textView: TextView = binding.warning
-        viewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        val recyclerView = binding.recyclerView
+        val recycleAdaptor = GroupListAdaptor()
+
+        viewModel.groups.observe(viewLifecycleOwner, Observer {
+            recycleAdaptor.submitList(it.toList())
         })
+
+        recyclerView.adapter = recycleAdaptor
+
+
+        val inputName = binding.inputName
+        binding.addButton.setOnClickListener {
+            viewModel.addGroup(inputName.text.toString())
+        }
+//        val textView: TextView = binding.warning
+//        viewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
         return root
     }
 
