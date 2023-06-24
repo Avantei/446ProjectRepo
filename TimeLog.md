@@ -5,3 +5,5 @@
 | 2023/05/31 |          |       |            |           |     2    |         | Functional properties + user scenerios |
 | 2023/06/02 |          |   6   |            |           |          |         | Making New Figma Mockups |
 | 2023/06/02 |          |       |            |           |     1    |         | Update user scenerios |
+| 2023/06/21 |          |       |            |           |          | 3       | Clean up repo and User Activity        |
+| 2023/06/24 |          |       |            |           |          | 4       | User Activity groups fragments         |
