@@ -12,29 +12,35 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mealplanner.R
 
 
-class GroupListAdaptor: ListAdapter<Group, GroupListAdaptor.ViewHolder>(DiffCallback) {
+class GroupListAdaptor(private val onClick: (Group) -> Unit) :
+    ListAdapter<Group, GroupListAdaptor.ViewHolder>(DiffCallback) {
     // ViewHolder is a container for an item in the view
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, private val onClick: (Group) -> Unit) :
+        RecyclerView.ViewHolder(itemView) {
         private val nameTextView = itemView.findViewById<TextView>(R.id.textView)
         private val imageButton = itemView.findViewById<ImageButton>(R.id.imageButton)
         private var currentGroup: Group? = null
+
         init {
-            imageButton.setOnClickListener{
-                Log.d("PETER", currentGroup?.name ?: "")
+            imageButton.setOnClickListener {
+                currentGroup?.let {
+                    onClick(it)
+                }
             }
         }
+
         // function called to update the content of a list
         fun bind(group: Group) {
             currentGroup = group
             nameTextView.text = group.name
         }
     }
+
     // Called when a new item is created
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_groups, parent, false)
-        return ViewHolder(view)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_groups, parent, false)
+        return ViewHolder(view, onClick)
     }
 
     // Called to update an item given an index

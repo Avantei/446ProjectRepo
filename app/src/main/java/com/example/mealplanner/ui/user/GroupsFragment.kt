@@ -30,7 +30,9 @@ class GroupsFragment : Fragment() {
         val root = binding.root
 
         val recyclerView = binding.recyclerView
-        val recycleAdaptor = GroupListAdaptor()
+        val recycleAdaptor = GroupListAdaptor{
+            // TODO: go to a group page here
+        }
 
         viewModel.groups.observe(viewLifecycleOwner, Observer {
             recycleAdaptor.submitList(it.toList())
