@@ -8,16 +8,104 @@
     tools:context=".ui.user.ProfileFragment">
 
     <TextView
-        android:id="@+id/warning"
+        android:id="@+id/name_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/profile_name_lbl"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1" />
+
+    <EditText
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/name_lbl"
+        app:layout_constraintTop_toBottomOf="@+id/name_lbl" />
+
+    <TextView
+        android:id="@+id/dietary_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/profile_dietary_lbl"
+        app:layout_constraintStart_toStartOf="@+id/name_text"
+        app:layout_constraintTop_toBottomOf="@+id/name_text" />
+
+    <TextView
+        android:id="@+id/preference_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/profile_preference_lbl"
+        app:layout_constraintStart_toStartOf="@+id/dairy_btn"
+        app:layout_constraintTop_toBottomOf="@+id/dairy_btn" />
+
+    <ToggleButton
+        android:id="@+id/vegetarian_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:textOff="@string/dietary_vegetarian"
+        android:textOn="@string/dietary_vegetarian"
+        app:layout_constraintStart_toStartOf="@+id/dietary_lbl"
+        app:layout_constraintTop_toBottomOf="@+id/dietary_lbl" />
+
+    <ToggleButton
+        android:id="@+id/vegan_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textOff="@string/dietary_vegan"
+        android:textOn="@string/dietary_vegan"
+        app:layout_constraintStart_toEndOf="@+id/vegetarian_btn"
+        app:layout_constraintTop_toTopOf="@+id/vegetarian_btn" />
+
+    <ToggleButton
+        android:id="@+id/gluten_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textOff="@string/dietary_gluten"
+        android:textOn="@string/dietary_gluten"
+        app:layout_constraintStart_toEndOf="@+id/vegan_btn"
+        app:layout_constraintTop_toTopOf="@+id/vegan_btn" />
+
+    <ToggleButton
+        android:id="@+id/halal_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/dietary_halal"
+        android:textOn="@string/dietary_halal"
+        app:layout_constraintStart_toStartOf="@+id/vegan_btn"
+        app:layout_constraintTop_toTopOf="@+id/dairy_btn" />
+
+    <ToggleButton
+        android:id="@+id/dairy_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textOff="@string/dietary_dairy"
+        android:textOn="@string/dietary_dairy"
+        app:layout_constraintStart_toStartOf="@+id/vegetarian_btn"
+        app:layout_constraintTop_toBottomOf="@+id/vegetarian_btn" />
+
+    <ToggleButton
+        android:id="@+id/kosher_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/dietary_kosher"
+        android:textOn="@string/dietary_kosher"
+        app:layout_constraintStart_toStartOf="@+id/gluten_btn"
+        app:layout_constraintTop_toTopOf="@+id/halal_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

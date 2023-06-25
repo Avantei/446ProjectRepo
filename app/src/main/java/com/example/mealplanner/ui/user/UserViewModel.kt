@@ -1,6 +1,5 @@
 package com.example.mealplanner.ui.user
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,12 +16,34 @@ class UserViewModel : ViewModel() {
     // Create Mutable and Live data for view
     private val _groups = MutableLiveData<List<Group>>(listOf())
     val groups: LiveData<List<Group>> = _groups
+    private val _username = MutableLiveData<String>("")
+    val username: LiveData<String> = _username
+    // Dietary Restriction
+    private val _isVegetarian = MutableLiveData<Boolean>(false)
+    private val _isVegan = MutableLiveData<Boolean>(false)
+    private val _isGlutenFree = MutableLiveData<Boolean>(false)
+    private val _isDairyFree = MutableLiveData<Boolean>(false)
+    private val _isHalal = MutableLiveData<Boolean>(false)
+    private val _isKosher = MutableLiveData<Boolean>(false)
+    val isVegetarian: LiveData<Boolean> = _isVegetarian
+    val isVegan: LiveData<Boolean> = _isVegan
+    val isGlutenFree: LiveData<Boolean> = _isGlutenFree
+    val isDairyFree: LiveData<Boolean> = _isDairyFree
+    val isHalal: LiveData<Boolean> = _isHalal
+    val isKosher: LiveData<Boolean> = _isKosher
 
     // Retrieve data on create
     init {
         getGroups()
+        _username.value = repo.getUsername()
+        _isVegetarian.value = repo.getIsVegetarian()
+        _isVegan.value = repo.getIsVegan()
+        _isGlutenFree.value = repo.getIsGlutenFree()
+        _isDairyFree.value = repo.getIsDairyFree()
+        _isHalal.value = repo.getIsHalal()
+        _isKosher.value = repo.getIsKosher()
     }
-    
+
     fun addGroup(name: String) {
         val result = repo.addGroup(name)
         if (result) {
