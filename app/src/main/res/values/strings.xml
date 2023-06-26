@@ -9,4 +9,17 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="groups_tab_name">Groups</string>
+    <string name="profile_tab_name">Profile</string>
+    <string name="new_group_hint">New Group</string>
+    <string name="profile_name_lbl">Name</string>
+    <string name="profile_dietary_lbl">Dietary Restrictions</string>
+    <string name="profile_preference_lbl">Preferences</string>
+    <string name="dietary_vegetarian">Vegetarian</string>
+    <string name="dietary_vegan">Vegan</string>
+    <string name="dietary_gluten">Gluten-Free</string>
+    <string name="dietary_dairy">Dairy-Free</string>
+    <string name="dietary_halal">Halal</string>
+    <string name="dietary_kosher">Kosher</string>
 </resources>
