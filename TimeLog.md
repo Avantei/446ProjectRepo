@@ -12,3 +12,4 @@
 | 2023/06/02 |          |       |           |           |         |    1     | Finalize and submit deliverable 2 |
 | 2023/06/21 |          |       |            |           |          | 3       | Clean up repo and User Activity        |
 | 2023/06/24 |          |       |            |           |          | 4       | User Activity groups fragments         |
+| 2023/06/24 |          |       |            |           |          | 1       | User Activity profile fragments         |
