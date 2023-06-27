@@ -5,13 +5,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.mealplanner.R
-import com.example.mealplanner.ui.rsvp.RsvpFragment
 
 // Tabs and their name
 private val TAB_TITLES = arrayOf(
     R.string.groups_tab_name,
-    R.string.profile_tab_name,
-    R.string.rsvp_tab_name
+    R.string.profile_tab_name
 )
 
 /**
@@ -26,7 +24,6 @@ class UserSectionsPagerAdapter(private val context: Context, fm: FragmentManager
         return when (position) {
             0 -> GroupsFragment()
             1 -> ProfileFragment()
-            2 -> RsvpFragment()
             else -> ProfileFragment()
         }
     }

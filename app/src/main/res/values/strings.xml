@@ -12,7 +12,6 @@
     <string name="title_activity_user">UserActivity</string>
     <string name="groups_tab_name">Groups</string>
     <string name="profile_tab_name">Profile</string>
-    <string name="rsvp_tab_name">RSVP (temp)</string>
     <string name="new_group_hint">New Group</string>
     <string name="profile_name_lbl">Name</string>
     <string name="profile_dietary_lbl">Dietary Restrictions</string>
