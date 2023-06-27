@@ -2,9 +2,9 @@ package com.example.mealplanner.ui.userActivity
 
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.example.mealplanner.databinding.ActivityUserBinding
 
 class UserActivity : AppCompatActivity() {
@@ -19,12 +19,14 @@ class UserActivity : AppCompatActivity() {
         // Inflate
         binding = ActivityUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Setup adaptor for tabs
-        val userSectionsPagerAdapter = UserSectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = userSectionsPagerAdapter
+
+        // Set up and connect pager with tabs
+        val pagerAdapter = UserPagerAdapter(this, this)
+        val viewPager: ViewPager2 = binding.viewPager
         val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
+        viewPager.adapter = pagerAdapter
+        pagerAdapter.attachMediator(tabs, viewPager)
+
         // Set up title
         viewModel.username.observe(this) {
             title = it
