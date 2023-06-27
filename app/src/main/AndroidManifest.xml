@@ -25,7 +25,7 @@
         <activity
             android:name=".ui.eventDetailActivity.EventActivity"
             android:exported="false"
-            android:label="Event"/>
+            android:label="Event" />
     </application>
 
 </manifest>
