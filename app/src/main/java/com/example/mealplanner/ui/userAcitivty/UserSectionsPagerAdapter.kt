@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui.user
+package com.example.mealplanner.ui.userAcitivty
 
 import android.content.Context
 import androidx.fragment.app.Fragment
@@ -28,7 +28,7 @@ class UserSectionsPagerAdapter(private val context: Context, fm: FragmentManager
         }
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return context.resources.getString(TAB_TITLES[position])
     }
 

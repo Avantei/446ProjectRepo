@@ -11,7 +11,8 @@ class EventActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_event)
+        binding = ActivityEventBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Setup adaptor for tabs
         val eventAdapter = EventAdapter(this, supportFragmentManager)
