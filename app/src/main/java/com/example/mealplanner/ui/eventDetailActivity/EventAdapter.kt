@@ -29,8 +29,8 @@ class EventAdapter(private val context: Context, fm: FragmentManager) :
         return when (position) {
             0 -> TimePickerFragment()
             1 -> LocationFragment()
-            2 -> DecisionFragment()
-            3 -> DecisionFragment()
+            2 -> DecisionFragment() // TODO: replace with RSVP fragment
+            3 -> DecisionFragment() // TODO: replace with Location fragment
             4 -> DecisionFragment()
             else -> DecisionFragment()
         }

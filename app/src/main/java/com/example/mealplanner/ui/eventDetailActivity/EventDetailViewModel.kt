@@ -20,6 +20,7 @@ class EventDetailViewModel : ViewModel() {
 
     // Retrieve data on create
     init {
+        // TODO: remove mock data
         _decisionName.value = "placeholder"
         _decisionImageId.value = R.drawable.default_restaurant_image
     }
