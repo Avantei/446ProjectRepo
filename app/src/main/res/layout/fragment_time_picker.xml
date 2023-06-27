@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TimePicker
-        android:id="@+id/simpleTimePicker"
+        android:id="@+id/startTime"
         android:layout_width="0dp"
         android:layout_height="127dp"
         android:timePickerMode="spinner"
@@ -31,24 +31,25 @@
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
     <TimePicker
-        android:id="@+id/simpleTimePicker2"
+        android:id="@+id/endTime"
         android:layout_width="0dp"
         android:layout_height="109dp"
         android:timePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker" />
+        app:layout_constraintTop_toBottomOf="@+id/startTime"
+ />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker2" />
+        app:layout_constraintTop_toBottomOf="@+id/endTime" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
