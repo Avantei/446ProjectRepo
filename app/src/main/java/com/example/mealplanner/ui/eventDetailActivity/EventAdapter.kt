@@ -3,7 +3,6 @@ package com.example.mealplanner.ui.eventDetailActivity
 import com.example.mealplanner.ui.user.GroupsFragment
 import com.example.mealplanner.ui.user.ProfileFragment
 
-package com.example.mealplanner.ui.user
 
 import android.content.Context
 import androidx.fragment.app.Fragment
