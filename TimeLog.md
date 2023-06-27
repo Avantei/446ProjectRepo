@@ -15,4 +15,7 @@
 | 2023/06/24 |          |       |            |           |          | 4       | User Activity groups fragments         |
 | 2023/06/24 |          |       |            |           |          | 1       | User Activity profile fragments         |
 | 2023/06/24 |     3    |       |            |           |          |        | Time-picker fragment         |
+| 2023/06/24 |          |       |            |           |    2      |        | Decision fragment #1        |
+| 2023/06/25 |          |       |            |           |    2      |        | Decision fragment #2        |
 | 2023/06/26 |     4    |       |            |           |          |        | Meeting + Completing code for demo         |
+| 2023/06/26 |          |       |            |           |    3     |        | Meeting + Completing code for demo         |
