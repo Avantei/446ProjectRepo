@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui.user
+package com.example.mealplanner.ui.userAcitivty
 
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
@@ -10,7 +10,7 @@ import com.example.mealplanner.databinding.ActivityUserBinding
 class UserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserBinding
-    private lateinit var viewModel: UserViewModel;
+    private lateinit var viewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

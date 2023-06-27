@@ -1,19 +1,15 @@
 package com.example.mealplanner.ui.eventDetailActivity
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mealplanner.R
-import com.example.mealplanner.data.UserRepository
 import com.example.mealplanner.ui.locationFragment.LocationSuggestion
-import com.example.mealplanner.ui.user.Group
-import com.example.mealplanner.ui.user.UserViewModel
 
 
 class EventDetailViewModel : ViewModel() {
     // Create repository for getting data
-    private val repo: UserRepository = UserRepository()
+//    private val repo: UserRepository = UserRepository()
     // Create Mutable and Live data for view
     private val _decisionName = MutableLiveData<String>()
     private val _decisionImageId = MutableLiveData<Int>()

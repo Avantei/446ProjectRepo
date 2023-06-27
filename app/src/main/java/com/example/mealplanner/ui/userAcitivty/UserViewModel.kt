@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui.user
+package com.example.mealplanner.ui.userAcitivty
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

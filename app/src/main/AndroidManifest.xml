@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MealPlanner">
         <activity
-            android:name=".ui.user.UserActivity"
+            android:name=".ui.userAcitivty.UserActivity"
             android:exported="false"
             android:label="User" />
         <activity
@@ -24,8 +24,8 @@
         </activity>
         <activity
             android:name=".ui.eventDetailActivity.EventActivity"
-            android:exported="true"
-            android:label="Event"></activity>
+            android:exported="false"
+            android:label="Event"/>
     </application>
 
 </manifest>

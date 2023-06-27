@@ -1,6 +1,5 @@
-package com.example.mealplanner.ui.user
+package com.example.mealplanner.ui.userAcitivty
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,7 +45,7 @@ class GroupListAdaptor(private val onClick: (Group) -> Unit) :
     // Called to update an item given an index
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val group = getItem(position)
-        holder.bind(group);
+        holder.bind(group)
     }
 }
 

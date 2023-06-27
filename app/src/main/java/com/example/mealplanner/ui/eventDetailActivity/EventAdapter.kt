@@ -1,8 +1,5 @@
 package com.example.mealplanner.ui.eventDetailActivity
 
-import com.example.mealplanner.ui.user.GroupsFragment
-import com.example.mealplanner.ui.user.ProfileFragment
-
 
 import android.content.Context
 import androidx.fragment.app.Fragment
@@ -39,7 +36,7 @@ class EventAdapter(private val context: Context, fm: FragmentManager) :
         }
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return context.resources.getString(TAB_TITLES[position])
     }
 
