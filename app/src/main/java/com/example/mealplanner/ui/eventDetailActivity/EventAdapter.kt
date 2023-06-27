@@ -30,6 +30,7 @@ class EventAdapter(private val context: Context, fm: FragmentManager) :
         // What fragment to return for each index in the TAB_TITLES
         return when (position) {
             0 -> DecisionFragment()
+            1 -> TimePickerFragment()
             else -> DecisionFragment()
         }
     }

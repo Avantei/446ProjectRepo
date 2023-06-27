@@ -21,6 +21,12 @@ class EventDetailViewModel : ViewModel() {
     val decisionName = _decisionName
     val decisionImageId = _decisionImageId
     val locationList = _locationList
+    var availableDate: String? = null //dd/MM/yyyy
+        private set
+    var availableStartTime: String? = null //24h
+        private set
+    var availableEndTime: String? = null //24h
+        private set
 
     // Retrieve data on create
     init {
@@ -42,5 +48,18 @@ class EventDetailViewModel : ViewModel() {
             }
         }
     }
+
+    fun setAvailableDate(AvailableDate: String) {
+        availableDate = AvailableDate
+    }
+
+    fun setAvailableStartTime(AvailableStartTime: String) {
+        availableStartTime = AvailableStartTime
+    }
+
+    fun setAvailableEndTime(AvailableEndTime: String) {
+        availableEndTime = AvailableEndTime
+    }
+
 
 }
