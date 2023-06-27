@@ -10,6 +10,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_user">UserActivity</string>
+    <string name="title_activity_event_detail">EventDetailActivity</string>
     <string name="groups_tab_name">Groups</string>
     <string name="profile_tab_name">Profile</string>
     <string name="new_group_hint">New Group</string>
