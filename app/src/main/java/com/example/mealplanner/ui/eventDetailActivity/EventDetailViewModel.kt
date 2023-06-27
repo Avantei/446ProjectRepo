@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mealplanner.R
 import com.example.mealplanner.data.UserRepository
+import com.example.mealplanner.ui.locationFragment.LocationSuggestion
 import com.example.mealplanner.ui.user.Group
 import com.example.mealplanner.ui.user.UserViewModel
 
@@ -16,8 +17,10 @@ class EventDetailViewModel : ViewModel() {
     // Create Mutable and Live data for view
     private val _decisionName = MutableLiveData<String>()
     private val _decisionImageId = MutableLiveData<Int>()
+    private val _locationList = MutableLiveData<MutableList<LocationSuggestion>>()
     val decisionName = _decisionName
     val decisionImageId = _decisionImageId
+    val locationList = _locationList
 
     // Retrieve data on create
     init {

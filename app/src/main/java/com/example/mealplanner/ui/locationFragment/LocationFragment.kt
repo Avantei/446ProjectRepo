@@ -9,11 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mealplanner.R
 import com.example.mealplanner.databinding.FragmentLocationBinding
+import com.example.mealplanner.ui.eventDetailActivity.EventDetailViewModel
 
 
 class LocationFragment : Fragment() {
 
-    private lateinit var viewModel: LocationViewModel
+    private lateinit var viewModel: EventDetailViewModel
     private lateinit var binding: FragmentLocationBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,16 +25,16 @@ class LocationFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel =
-            ViewModelProvider(this, LocationViewModel.Factory)[LocationViewModel::class.java]
+            ViewModelProvider(this, EventDetailViewModel.Factory)[EventDetailViewModel::class.java]
 
         binding = FragmentLocationBinding.inflate(layoutInflater)
         val text = binding.editTextText
         val button = binding.button
 
         val location = binding.rvLocation
-        val adapter = viewModel.locationlist.value?.let { LocationsAdapter(it) }
+        val adapter = viewModel.locationList.value?.let { LocationsAdapter(it) }
         button.setOnClickListener {
-            viewModel.locationlist.value?.add(0, LocationSuggestion(text.text.toString(), 0))
+            viewModel.locationList.value?.add(0, LocationSuggestion(text.text.toString(), 0))
             adapter?.notifyItemInserted(0)
         }
         location.adapter = adapter
