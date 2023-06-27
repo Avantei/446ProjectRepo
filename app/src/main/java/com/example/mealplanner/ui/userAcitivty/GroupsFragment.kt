@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui.user
+package com.example.mealplanner.ui.userAcitivty
 
 import android.os.Bundle
 import android.util.Log

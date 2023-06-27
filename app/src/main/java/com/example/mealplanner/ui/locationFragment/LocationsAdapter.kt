@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui.location
+package com.example.mealplanner.ui.locationFragment
 
 import android.view.LayoutInflater
 import android.view.View
