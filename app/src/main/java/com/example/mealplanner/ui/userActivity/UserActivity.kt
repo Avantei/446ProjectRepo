@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui.userAcitivty
+package com.example.mealplanner.ui.userActivity
 
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout

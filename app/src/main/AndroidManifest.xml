@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MealPlanner">
         <activity
-            android:name=".ui.userAcitivty.UserActivity"
+            android:name=".ui.userActivity.UserActivity"
             android:exported="false"
             android:label="User" />
         <activity

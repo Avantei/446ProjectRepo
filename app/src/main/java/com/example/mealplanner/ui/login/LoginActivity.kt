@@ -15,7 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mealplanner.R
 import com.example.mealplanner.databinding.ActivityLoginBinding
-import com.example.mealplanner.ui.userAcitivty.UserActivity
+import com.example.mealplanner.ui.userActivity.UserActivity
 
 
 class LoginActivity : AppCompatActivity() {

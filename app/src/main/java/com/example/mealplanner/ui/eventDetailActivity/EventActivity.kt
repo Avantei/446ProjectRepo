@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
-import com.example.mealplanner.R
 import com.google.android.material.tabs.TabLayout
 import com.example.mealplanner.databinding.ActivityEventBinding
-import com.example.mealplanner.ui.userAcitivty.UserViewModel
 
 class EventActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventBinding

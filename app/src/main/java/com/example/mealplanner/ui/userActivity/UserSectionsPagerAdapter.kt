@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui.userAcitivty
+package com.example.mealplanner.ui.userActivity
 
 import android.content.Context
 import androidx.fragment.app.Fragment
