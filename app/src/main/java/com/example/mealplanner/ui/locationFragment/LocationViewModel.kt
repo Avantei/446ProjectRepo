@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui.location
+package com.example.mealplanner.ui.locationFragment
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

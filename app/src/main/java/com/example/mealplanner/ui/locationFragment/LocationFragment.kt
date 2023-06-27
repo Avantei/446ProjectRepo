@@ -1,28 +1,32 @@
-package com.example.mealplanner.ui.location
+package com.example.mealplanner.ui.locationFragment
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mealplanner.R
-import com.example.mealplanner.databinding.ActivityLocationBinding
-import com.example.mealplanner.ui.login.LoginViewModel
-import com.example.mealplanner.ui.login.LoginViewModelFactory
+import com.example.mealplanner.databinding.FragmentLocationBinding
 
-class LocationActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LocationViewModel
-    private lateinit var binding: ActivityLocationBinding
+class LocationFragment : Fragment() {
 
+    private lateinit var viewModel: LocationViewModel
+    private lateinit var binding: FragmentLocationBinding
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_location, container, false)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_location)
-        val viewModel =
+        viewModel =
             ViewModelProvider(this, LocationViewModel.Factory)[LocationViewModel::class.java]
 
-        binding = ActivityLocationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = FragmentLocationBinding.inflate(layoutInflater)
         val text = binding.editTextText
         val button = binding.button
 
@@ -34,7 +38,6 @@ class LocationActivity : AppCompatActivity() {
         }
         location.adapter = adapter
         // Set layout manager to position the items
-        location.layoutManager = LinearLayoutManager(this)
-
+        location.layoutManager = LinearLayoutManager(activity)
     }
 }
