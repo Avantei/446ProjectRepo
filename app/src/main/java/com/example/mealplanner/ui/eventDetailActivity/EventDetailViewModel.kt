@@ -1,5 +1,6 @@
 package com.example.mealplanner.ui.eventDetailActivity
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -16,9 +17,9 @@ class EventDetailViewModel : ViewModel() {
     private val _locationList: MutableLiveData<MutableList<LocationSuggestion>> = MutableLiveData(
         mutableListOf()
     )
-    val decisionName = _decisionName
-    val decisionImageId = _decisionImageId
-    val locationList = _locationList
+    val decisionName: LiveData<String> = _decisionName
+    val decisionImageId: LiveData<Int> = _decisionImageId
+    val locationList: LiveData<MutableList<LocationSuggestion>> = _locationList
     var availableDate: String? = null //dd/MM/yyyy
         private set
     var availableStartTime: String? = null //24h
