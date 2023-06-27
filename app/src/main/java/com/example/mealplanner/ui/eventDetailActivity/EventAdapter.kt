@@ -3,8 +3,6 @@ package com.example.mealplanner.ui.eventDetailActivity
 import com.example.mealplanner.ui.user.GroupsFragment
 import com.example.mealplanner.ui.user.ProfileFragment
 
-package com.example.mealplanner.ui.user
-
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -31,6 +29,7 @@ class EventAdapter(private val context: Context, fm: FragmentManager) :
         // What fragment to return for each index in the TAB_TITLES
         return when (position) {
             0 -> DecisionFragment()
+            1 -> TimePickerFragment()
             else -> DecisionFragment()
         }
     }
