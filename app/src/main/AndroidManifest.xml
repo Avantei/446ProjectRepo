@@ -17,15 +17,21 @@
             android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:label="Login">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".ui.eventDetailActivity.EventActivity"
+            android:exported="true"
+            android:label="Event">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.eventDetailActivity.EventActivity"
-            android:exported="false"
-            android:label="Event"/>
     </application>
 
 </manifest>
