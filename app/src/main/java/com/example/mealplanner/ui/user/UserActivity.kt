@@ -14,6 +14,8 @@ class UserActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Create ViewModel
+        viewModel = ViewModelProvider(this, UserViewModel.Factory)[UserViewModel::class.java]
         // Inflate
         binding = ActivityUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -23,7 +25,9 @@ class UserActivity : AppCompatActivity() {
         viewPager.adapter = userSectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
-        // Create ViewModel
-        viewModel = ViewModelProvider(this, UserViewModel.Factory)[UserViewModel::class.java]
+        // Set up title
+        viewModel.username.observe(this) {
+            title = it
+        }
     }
 }
