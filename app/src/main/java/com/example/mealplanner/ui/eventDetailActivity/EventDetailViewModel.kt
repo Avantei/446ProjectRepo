@@ -13,7 +13,9 @@ class EventDetailViewModel : ViewModel() {
     // Create Mutable and Live data for view
     private val _decisionName = MutableLiveData<String>()
     private val _decisionImageId = MutableLiveData<Int>()
-    private val _locationList = MutableLiveData<MutableList<LocationSuggestion>>()
+    private val _locationList: MutableLiveData<MutableList<LocationSuggestion>> = MutableLiveData(
+        mutableListOf()
+    )
     val decisionName = _decisionName
     val decisionImageId = _decisionImageId
     val locationList = _locationList

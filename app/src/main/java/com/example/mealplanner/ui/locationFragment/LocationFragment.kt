@@ -19,19 +19,12 @@ class LocationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_location, container, false)
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel =
-            ViewModelProvider(this, EventDetailViewModel.Factory)[EventDetailViewModel::class.java]
-
+    ): View {
         binding = FragmentLocationBinding.inflate(layoutInflater)
         val text = binding.editTextText
         val button = binding.button
-
         val location = binding.rvLocation
+
         val adapter = viewModel.locationList.value?.let { LocationsAdapter(it) }
         button.setOnClickListener {
             viewModel.locationList.value?.add(0, LocationSuggestion(text.text.toString(), 0))
@@ -40,5 +33,10 @@ class LocationFragment : Fragment() {
         location.adapter = adapter
         // Set layout manager to position the items
         location.layoutManager = LinearLayoutManager(activity)
+        return binding.root
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[EventDetailViewModel::class.java]
     }
 }
