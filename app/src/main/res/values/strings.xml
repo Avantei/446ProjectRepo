@@ -22,4 +22,9 @@
     <string name="dietary_dairy">Dairy-Free</string>
     <string name="dietary_halal">Halal</string>
     <string name="dietary_kosher">Kosher</string>
+    <string name="time_tab_name">Time</string>
+    <string name="location_tab_name">Location</string>
+    <string name="transport_tab_name">RSVP & Transport</string>
+    <string name="bill_tab_name">Location</string>
+    <string name="decision_tab_name">Decision</string>
 </resources>

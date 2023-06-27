@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.mealplanner.R
 import com.example.mealplanner.data.UserRepository
 import com.example.mealplanner.ui.user.Group
 import com.example.mealplanner.ui.user.UserViewModel
@@ -20,6 +21,8 @@ class EventDetailViewModel : ViewModel() {
 
     // Retrieve data on create
     init {
+        _decisionName.value = "placeholder"
+        _decisionImageId.value = R.drawable.default_restaurant_image
     }
 
 
