@@ -3,13 +3,10 @@ package com.example.mealplanner.ui.eventDetailActivity
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import com.example.mealplanner.R
 import com.example.mealplanner.ui.locationFragment.LocationFragment
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 // Tabs and their name
 private val TAB_TITLES = arrayOf(
@@ -20,11 +17,14 @@ private val TAB_TITLES = arrayOf(
     R.string.decision_tab_name
 )
 
-class EventPagerAdapter(private val context: Context, fa: FragmentActivity) :
-    FragmentStateAdapter(fa) {
-    override fun getItemCount() = TAB_TITLES.size
+/**
+ * A [FragmentPagerAdapter] that returns a fragment corresponding to
+ * one of the sections/tabs/pages.
+ */
+class EventAdapter(private val context: Context, fm: FragmentManager) :
+    FragmentPagerAdapter(fm) {
 
-    override fun createFragment(position: Int): Fragment {
+    override fun getItem(position: Int): Fragment {
         // What fragment to return for each index in the TAB_TITLES
         return when (position) {
             0 -> TimePickerFragment()
@@ -36,10 +36,11 @@ class EventPagerAdapter(private val context: Context, fa: FragmentActivity) :
         }
     }
 
-    fun attachMediator(tabs: TabLayout, viewPager: ViewPager2) {
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = context.resources.getString(TAB_TITLES[position])
-        }.attach()
+    override fun getPageTitle(position: Int): CharSequence {
+        return context.resources.getString(TAB_TITLES[position])
     }
 
+    override fun getCount(): Int {
+        return TAB_TITLES.size
+    }
 }
