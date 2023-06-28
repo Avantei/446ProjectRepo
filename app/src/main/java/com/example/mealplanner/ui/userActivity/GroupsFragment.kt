@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mealplanner.databinding.FragmentGroupsBinding
 import com.example.mealplanner.ui.eventDetailActivity.EventActivity
+import com.example.mealplanner.ui.groupActivity.GroupActivity
 
 class GroupsFragment : Fragment() {
 
@@ -34,7 +35,7 @@ class GroupsFragment : Fragment() {
         val recycleAdaptor = GroupListAdaptor {
             Log.d("TODO", "Clicked Group ${it.name}")
             // TODO: go to a group page here
-            val intent = Intent(requireActivity(), EventActivity::class.java)
+            val intent = Intent(requireActivity(), GroupActivity::class.java)
             intent.putExtra("groupName", it.name)
             startActivity(intent)
         }
