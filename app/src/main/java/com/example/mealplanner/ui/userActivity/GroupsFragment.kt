@@ -1,5 +1,6 @@
 package com.example.mealplanner.ui.userActivity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mealplanner.databinding.FragmentGroupsBinding
+import com.example.mealplanner.ui.eventDetailActivity.EventActivity
 
 class GroupsFragment : Fragment() {
 
@@ -30,8 +32,11 @@ class GroupsFragment : Fragment() {
 
         val recyclerView = binding.recyclerView
         val recycleAdaptor = GroupListAdaptor {
-            // TODO: go to a group page here
             Log.d("TODO", "Clicked Group ${it.name}")
+            // TODO: go to a group page here
+            val intent = Intent(requireActivity(), EventActivity::class.java)
+            intent.putExtra("groupName", it.name)
+            startActivity(intent)
         }
 
         viewModel.groups.observe(viewLifecycleOwner) {
