@@ -6,12 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mealplanner.databinding.FragmentGroupEventsBinding
 import com.example.mealplanner.ui.createEventActivity.CreateEventActivity
-import com.example.mealplanner.ui.userActivity.UserActivity
+import com.example.mealplanner.ui.eventDetailActivity.EventActivity
 
 class EventsFragment : Fragment() {
 
@@ -35,6 +34,12 @@ class EventsFragment : Fragment() {
         val recyclerView = binding.recyclerView
         val recyclerAdaptor = EventListAdaptor {
             Log.d("TODO", "EVENT CLICKED - NAME: ${it.name}")
+
+            val intent = Intent(requireActivity(), EventActivity::class.java)
+            // TODO: pass correct value for intent extra
+            intent.putExtra("eventId", "TODO")
+            startActivity(intent)
+
         }
 
         eventsViewModel.events.observe(viewLifecycleOwner) {
