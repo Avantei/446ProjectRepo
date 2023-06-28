@@ -60,13 +60,15 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+                // TODO: update with correct intent and data
+                val intent = Intent(this, UserActivity::class.java)
+                intent.putExtra("username", loginResult.success.displayName)
+                startActivity(intent)
             }
             setResult(Activity.RESULT_OK)
 
             //Complete and destroy login activity once successful
-//            finish()
-            val intent = Intent(this, UserActivity::class.java)
-            startActivity(intent)
+            finish()
         })
 
         username.afterTextChanged {

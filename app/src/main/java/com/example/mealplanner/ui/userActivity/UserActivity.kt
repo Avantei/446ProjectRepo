@@ -31,5 +31,10 @@ class UserActivity : AppCompatActivity() {
         viewModel.username.observe(this) {
             title = it
         }
+
+        // Gets intents
+        val receivedData = intent.getStringExtra("username")
+        viewModel.changeDisplayName(receivedData!!)
+
     }
 }

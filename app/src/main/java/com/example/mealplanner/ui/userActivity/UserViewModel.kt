@@ -56,6 +56,11 @@ class UserViewModel : ViewModel() {
         this._groups.postValue(result.map { Group(it) })
     }
 
+    // TODO: demo only
+    fun changeDisplayName(name: String) {
+        _username.value = name
+    }
+
     companion object {
         val Factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
