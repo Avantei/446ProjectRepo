@@ -17,5 +17,9 @@
 | 2023/06/24 |     3    |       |            |           |          |        | Time-picker fragment         |
 | 2023/06/24 |          |       |            |           |    2      |        | Decision fragment #1        |
 | 2023/06/25 |          |       |            |           |    2      |        | Decision fragment #2        |
+| 2023/06/25 |          |       |            |           |          |    3    | Meeting and merging code        |
 | 2023/06/26 |     4    |       |            |           |          |        | Meeting + Completing code for demo         |
 | 2023/06/26 |          |       |            |           |    3     |        | Meeting + Completing code for demo         |
+| 2023/06/26 |          |       |            |           |          | 3       | Update pager and code clean up        |
+| 2023/06/26 |          |   4   |            |           |          |        | Meeting + Completing code for demo         |
+

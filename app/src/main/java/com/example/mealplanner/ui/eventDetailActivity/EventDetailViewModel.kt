@@ -1,5 +1,6 @@
 package com.example.mealplanner.ui.eventDetailActivity
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -13,12 +14,12 @@ class EventDetailViewModel : ViewModel() {
     // Create Mutable and Live data for view
     private val _decisionName = MutableLiveData<String>()
     private val _decisionImageId = MutableLiveData<Int>()
-    private val _locationList: MutableLiveData<MutableList<LocationSuggestion>> = MutableLiveData(
-        mutableListOf()
+    private val _locationList: MutableLiveData<List<LocationSuggestion>> = MutableLiveData(
+        listOf()
     )
-    val decisionName = _decisionName
-    val decisionImageId = _decisionImageId
-    val locationList = _locationList
+    val decisionName: LiveData<String> = _decisionName
+    val decisionImageId: LiveData<Int> = _decisionImageId
+    val locationList: LiveData<List<LocationSuggestion>> = _locationList
     var availableDate: String? = null //dd/MM/yyyy
         private set
     var availableStartTime: String? = null //24h
@@ -31,6 +32,31 @@ class EventDetailViewModel : ViewModel() {
         // TODO: remove mock data
         _decisionName.value = "placeholder"
         _decisionImageId.value = R.drawable.default_restaurant_image
+    }
+
+    private fun updateDecision() {
+        // TODO: this is for first demo, later decisionName should be fetched from server
+        var highest: LocationSuggestion? = null
+        _locationList.value?.forEach {
+            if (highest == null || highest!!.votes < it.votes) {
+                highest = it
+            }
+        }
+        _decisionName.postValue(if (highest != null) highest!!.name else "")
+    }
+
+    fun addVote(index: Int) {
+        val list = _locationList.value?.toMutableList()
+        list?.get(index)?.votes = list?.get(index)?.votes?.plus(1)!!
+        _locationList.value = list.toList()
+        updateDecision()
+    }
+
+    fun addLocation(name: String) {
+        val list = _locationList.value?.toMutableList()
+        list?.add(LocationSuggestion(name, 0))
+        _locationList.value = list?.toList()
+        updateDecision()
     }
 
 

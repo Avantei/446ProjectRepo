@@ -26,7 +26,7 @@
     <string name="time_tab_name">Time</string>
     <string name="location_tab_name">Location</string>
     <string name="transport_tab_name">RSVP &amp; Transport</string>
-    <string name="bill_tab_name">Location</string>
+    <string name="bill_tab_name">Bill</string>
     <string name="decision_tab_name">Decision</string>
     <string name="title_events">Events</string>
     <string name="title_members">Members</string>
