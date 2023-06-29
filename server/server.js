@@ -32,6 +32,8 @@ server.on("error", (error) => {
 server.on("listening", () => {
   console.info(`Running in ${process.env.NODE_ENV} mode at port: ${PORT}`);
   console.info(`Access http://localhost:${PORT}`);
+  // Connect to mongo
+  require("./dal/db/mongo").getClient();
 });
 
 server.on("close", () => {
