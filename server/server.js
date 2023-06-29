@@ -1,8 +1,8 @@
 const app = require("./app");
 const http = require("http");
-// const { serviceConfig } = require("./config/index");
+const { serviceConfig } = require("./config/index");
 
-const PORT = 8080;
+const PORT = 8080 || serviceConfig.PORT;
 app.set("port", PORT);
 
 const server = http.createServer(app);
@@ -30,10 +30,7 @@ server.on("error", (error) => {
 });
 
 server.on("listening", () => {
-  const addr = server.address();
-  const bind = typeof addr === "string"
-    ? "pipe " + addr
-    : "port " + addr.port;
+  console.info(`Running in ${process.env.NODE_ENV} mode at port: ${PORT}`);
   console.info(`Access http://localhost:${PORT}`);
 });
 

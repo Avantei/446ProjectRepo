@@ -1,8 +1,9 @@
-const { Router } = require("express");
 const jwt = require("jsonwebtoken");
 
-const jwtKey = "secret_key"
-const jwtExpire = 300 // seconds
+const { jwtConfig } = require("../config/index");
+
+const jwtKey = jwtConfig.secret;
+const jwtExpire = jwtConfig.expireSec; // seconds
 
 /**
  * Sign a JWT with the userInfo
