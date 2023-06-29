@@ -37,7 +37,7 @@ const authMiddleware = (req, res, next) => {
     req.jwtData = decoded.data
     next()
   } catch (badToken) {
-    return res.status(401).end()
+    return res.status(401).send("Unauthorized: bad jwt token")
   }
 }
 
@@ -57,7 +57,7 @@ const authenticate = (req) => {
   }
 }
  // TODO: update jwt content
-const createJwtData = (user) => {
+const createTokenData = (user) => {
   return {
     userId: user.userId
   };
@@ -67,5 +67,5 @@ module.exports = {
   authMiddleware,
   authenticate,
   signToken,
-  createJwtData
+  createTokenData
 }
