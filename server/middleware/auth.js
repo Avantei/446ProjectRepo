@@ -56,9 +56,16 @@ const authenticate = (req) => {
     return null;
   }
 }
+ // TODO: update jwt content
+const createJwtData = (user) => {
+  return {
+    userId: user.userId
+  };
+}
 
 module.exports = {
   authMiddleware,
   authenticate,
-  signToken
+  signToken,
+  createJwtData
 }

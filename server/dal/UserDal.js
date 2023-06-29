@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require("uuid");
 const mongo = require("./db/mongo");
 const config = require("../config");
 const collectionName = "users"
@@ -38,8 +39,22 @@ class UserDal {
     }
   }
 
-  async createUser() {
-
+  async createUser(username, password) {
+    const userId = uuidv4();
+    const newUser = {
+      username,
+      password,
+      userId
+    };
+    try {
+      const db = await this._getCollection();
+      const result = await db.insertOne(newUser);
+      if (result.acknowledged)
+        return { data: new UserDto(await db.findOne({ _id: result.insertedId })) };
+      return { data: null };
+    } catch (ex) {
+      return { err: ex }
+    }
   }
 
   async removeUser(userId) {

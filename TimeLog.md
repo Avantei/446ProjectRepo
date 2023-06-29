@@ -22,4 +22,6 @@
 | 2023/06/26 |          |       |            |           |    3     |        | Meeting + Completing code for demo         |
 | 2023/06/26 |          |       |            |           |          | 3       | Update pager and code clean up        |
 | 2023/06/26 |          |   4   |            |           |          |        | Meeting + Completing code for demo         |
+| 2023/06/28 |          |      |            |           |          | 2       | Deliverable 3 and meetings        |
+| 2023/06/29 |          |      |            |           |          | 4       | Setup server        |
 
