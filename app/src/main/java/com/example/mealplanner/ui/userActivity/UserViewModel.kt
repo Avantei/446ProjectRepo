@@ -5,9 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mealplanner.data.UserRepository
+import com.example.mealplanner.data.model.LoggedInUser
+import com.example.mealplanner.ui.groupActivity.events.Event
 
 data class Group(
-    val name: String
+    val name: String,
+    //val members: List<String>,
+    //val events: List<Event>,
+    //val groupBill: Map<String, List<Int>>, // unsure if we want to make group bill a data class
+    //val groupOwner: LoggedInUser, // could also swap to a string for just userID or whatever auth
 )
 
 class UserViewModel : ViewModel() {
