@@ -12,7 +12,7 @@
 | 2023/06/02 |          |       |            |           |         |    3     | Finalize and submit deliverable 1 |
 | 2023/06/02 |    5     |       |            |           |         |    1     | Write, Finalize and submit deliverable 2 |
 | 2023/06/21 |          |       |            |           |          | 3       | Clean up repo and User Activity        |
-| 2023/06/23 |          |       |     3      |           |    2     |        | Create event activity      |
+| 2023/06/23 |          |       |     3      |           |          |        | Create event activity      |
 | 2023/06/24 |          |       |            |           |          | 4       | User Activity groups fragments         |
 | 2023/06/24 |          |       |            |           |          | 1       | User Activity profile fragments         |
 | 2023/06/24 |     3    |       |            |           |          |        | Time-picker fragment         |
@@ -23,7 +23,7 @@
 | 2023/06/26 |          |       |            |           |    3     |        | Meeting + Completing code for demo         |
 | 2023/06/26 |          |       |            |           |          | 3       | Update pager and code clean up        |
 | 2023/06/26 |          |   4   |     4      |           |          |        | Meeting + Completing code for demo         |
-| 2023/06/27 |          |       |     6      |           |    2     |        | Full group events activity UI code      |
+| 2023/06/27 |          |       |     6      |           |          |        | Full group events activity UI code      |
 
 
 
