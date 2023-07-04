@@ -68,6 +68,19 @@ class GroupDal {
       return { err: ex }
     }
   }
+
+  async isMemberInGroup(groupId, userId) {
+    try {
+      const db = await this._getCollection();
+      const result = await db.countDocuments({
+        groupId,
+        members: { $elemMatch: { $eq: userId } }
+      });
+      return { data: count === 1 };
+    } catch (ex) {
+      return { err: ex }
+    }
+  }
 };
 
 module.exports = GroupDal;
