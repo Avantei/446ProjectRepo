@@ -1,7 +1,7 @@
 const express = require("express");
 const UserDal = require("../dal/UserDal");
 const jwt = require("../middleware/auth");
-const validationMW = require("../middleware/UserValidation");
+const validation = require("../middleware/UserValidation");
 
 const router = express.Router();
 const userDal = new UserDal();
@@ -15,7 +15,7 @@ router.get("/info", jwt.authMiddleware, async (req, res) => {
 });
 
 /* Login a user */
-router.post("/login", validationMW.login, async (req, res, next) => {
+router.post("/login", validation.login, async (req, res, next) => {
   // skip validation if the token is valid
   const decoded = jwt.authenticate(req);
   if (decoded) {
@@ -35,7 +35,7 @@ router.post("/login", validationMW.login, async (req, res, next) => {
 });
 
 /* Register a user */
-router.post("/register", validationMW.register, async (req, res, next) => {
+router.post("/register", validation.register, async (req, res, next) => {
   const { email, username, password } = req.body;
   // check email not used
   if (await userDal.checkByEmail(email)) return res.status(409).send("email occupied");

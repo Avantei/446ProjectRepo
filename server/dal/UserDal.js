@@ -7,10 +7,10 @@ const collectionName = "users"
 
 class User {
   constructor(userId, email, password, username) {
-    this.userId = userId;
-    this.email = email;
-    this.username = username;
-    this.password = password;
+    this.userId = userId;       // string
+    this.email = email;         // string
+    this.username = username;   // string
+    this.password = password;   // string
     this.isVegan = false;
     this.isVegetarian = false;
     this.isHalal = false;
@@ -22,9 +22,11 @@ class User {
 }
 
 class UserDto {
-  constructor(user) {
-    this.userId = user.userId;
-    this.username = user.username;
+  userId; email; username; isVegan; isVegetarian; isHalal; isGlutenFree; isDairyFree; isKosher; preferences;
+  constructor(data) {
+    for (const [key, value] of Object.entries(this)) {
+      this[key] = data[key];
+    }
   }
 }
 
