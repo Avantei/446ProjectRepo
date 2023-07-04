@@ -1,71 +1,44 @@
-const jwt = require("jsonwebtoken");
+const jwtUtil = require("../util/JwtUtil");
+const UserDal = require("../dal/UserDal");
 
-const { jwtConfig } = require("../config/index");
-
-const jwtKey = jwtConfig.secret;
-const jwtExpire = jwtConfig.expireSec; // seconds
-
-/**
- * Sign a JWT with the userInfo
- * @param {*} userInfo 
- * @returns 
- */
-const signToken = (userInfo) => {
-  const token = jwt.sign({ data: userInfo }, jwtKey, {
-    algorithm: "HS256",
-    expiresIn: jwtExpire
-  });
-  return { token, expireSec: jwtExpire };
-}
+const userDal = new UserDal();
 
 /**
  * Middleware that checks token, return 401 if invalid, or next() if valid
  * store the decoded data in req.jwtData
+ * This validates that jwt is valid and not expired
  * @param {*} req 
  * @param {*} res 
  * @param {*} next 
  * @returns 
  */
-const authMiddleware = (req, res, next) => {
-  const token = req.cookies.token
-  if (!token) {
-    return res.status(401).end()
+const validateToken = async (req, res, next) => {
+  const tokenData = jwtUtil.checkToken(req.cookies.token);
+  if (tokenData) {
+    req.jwtData = decoded.data;
+    return next();
   }
-
-  try {
-    decoded = jwt.verify(token, jwtKey)
-    req.jwtData = decoded.data
-    next()
-  } catch (badToken) {
-    return res.status(401).send("Unauthorized: bad jwt token")
-  }
+  return res.status(401).send("Unauthorized: bad jwt token");
 }
 
 /**
- * 
- * @param {*} cookie 
- * @returns decoded object or null
+ * Middleware that checks if userId in jwtData exists
+ * Must be called after validateToken
+ * This make sure the data in the token is valid and not fraud
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 5
  */
-const authenticate = (req) => {
-  const token = req.cookies.token
-  if (!token) return null;
-  try {
-    decoded = jwt.verify(token, jwtKey)
-    return decoded.data;
-  } catch (badToken) {
-    return null;
-  }
-}
- // TODO: update jwt content
-const createTokenData = (user) => {
-  return {
-    userId: user.userId
-  };
+const validateUser = async (req, res, next) => {
+  const isReal = await userDal.checkById(req.jwtData.userId);
+  if (isReal) return next();
+  return res.status(404).send("Not Found: user session not found");
 }
 
+/**
+ * This is a short cut to validate token as well as user
+ */
+const sessionValidations = [validateToken, validateUser];
 module.exports = {
-  authMiddleware,
-  authenticate,
-  signToken,
-  createTokenData
+  validateUser, validateToken, sessionValidations
 }
