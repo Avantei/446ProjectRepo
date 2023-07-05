@@ -5,10 +5,13 @@ const collectionName = "events"
 
 
 class Location {
-  id = 0; // This is local id for location in the event
-  name = "";
-  vote = 0;
   external = ""; // reserved for third party reference
+  constructor(name, id, vote, suggester) {
+    this.id = id; // This is local id for location in the event
+    this.name = name;
+    this.vote = vote;
+    this.suggesterId = suggester; // string
+  }
 }
 
 class Event {
@@ -61,6 +64,21 @@ class EventDal {
       return { err: ex }
     }
   }
+
+  async addLocation(eventId, location, suggesterId) {
+    try {
+      const db = await this._getCollection();
+      const locationToAdd = new Location(location, "some-id", 0, suggesterId);
+      const updateRes = await db.updateOne({ eventId },
+        { $addToSet: { locations: locationToAdd } }
+      );
+      if (updateRes.modifiedCount === 0) return { data: false };
+      return { data: true };
+    } catch (ex) {
+      return { err: ex }
+    }
+  }
+
   // Join with groups and check if userId is in the group 
   async getEventWithMember(eventId, userId) {
     try {
@@ -80,6 +98,30 @@ class EventDal {
       ]);
       const result = await cursor.next();
       if (result) return { data: new EventDto(result) };
+      return { data: null };
+    } catch (ex) {
+      return { err: ex }
+    }
+  }
+
+  async isMemberInEvent(eventId, userId) {
+    try {
+      const db = await this._getCollection();
+      const cursor = db.aggregate([
+        { $match: { eventId } },
+        {
+          $lookup: {
+            from: "groups",
+            localField: "groupId",
+            foreignField: "groupId",
+            as: "groups"
+          }
+        },
+        { $match: { "groups.0.members": { $elemMatch: { $eq: userId } } } },
+        { $count: "count" }
+      ]);
+      const result = await cursor.next();
+      if (result) return { data: result.count === 1 };
       return { data: null };
     } catch (ex) {
       return { err: ex }

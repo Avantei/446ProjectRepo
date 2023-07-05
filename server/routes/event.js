@@ -64,10 +64,20 @@ router.post("/:eventId/location/suggest", ...sessionValidations, validation.even
   async (req, res, next) => {
     const userId = req.jwtData.userId;
     const eventId = req.params.eventId;
-    let { data, err } = await eventDal.getEventWithMember(eventId, userId);
+    // check user in event
+    let { data: event, err: err0 } = await eventDal.getEventWithMember(eventId, userId);
+    if (err0) return next(err0);
+    if (!event) return res.status(404).send("Not Found: no matching event found");
+    // add location
+    const { name } = req.body;
+    const { data: isSuccess, err: updateErr } = await eventDal.addLocation(eventId, name, userId);
+    if (updateErr) return next(updateErr);
+    if (!isSuccess) return next("DB Error: failed to add location");
+    // Retrieve the new document
+    let { data, err } = await eventDal.getById(eventId);
     if (err) return next(err);
-    if (!data) return res.status(404).send("Not Found: no matching event found");
-    return res.status(404).send("Not Implemented")
+    if (!data) return res.status(404).send("Not Found: no event found");
+    return res.status(200).send(data);
   }
 );
 /* Change a vote on location */
