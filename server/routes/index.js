@@ -1,6 +1,7 @@
 const express = require("express");
 const userRouter = require("./user");
 const groupRouter = require("./group");
+const eventRouter = require("./event");
 
 const router = express.Router();
 
@@ -8,13 +9,13 @@ const router = express.Router();
 router.get("/", (req, res) => res.send("Connected"));
 
 // API route
-// router.use("/api/voicework", auth, voiceworkRouter);
 router.use("/user", userRouter);
 router.use("/group", groupRouter);
+router.use("/event", eventRouter);
 // API 404
-router.use("/api/*", (req, res) => {
+router.use("/*", (req, res) => {
   res.status(404);
-  res.send("API Endpoint not found");
+  res.send("Not Found: Endpoint or method not defined");
 });
 
 module.exports = router;

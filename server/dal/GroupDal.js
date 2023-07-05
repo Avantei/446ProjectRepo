@@ -76,7 +76,7 @@ class GroupDal {
         groupId,
         members: { $elemMatch: { $eq: userId } }
       });
-      return { data: count === 1 };
+      return { data: result === 1 };
     } catch (ex) {
       return { err: ex }
     }

@@ -49,5 +49,4 @@ router.post("/leave", async (req, res) => {
   res.status(404).send("Not Implemented")
 });
 
-
 module.exports = router;
