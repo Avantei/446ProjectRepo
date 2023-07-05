@@ -52,38 +52,41 @@ router.get("/:eventId", ...sessionValidations,
   async (req, res, next) => {
     const userId = req.jwtData.userId;
     const eventId = req.params.eventId;
-    // TODO: check if user is in event
-    // Retrieve event
-    const { data, err } = await eventDal.getById(eventId);
+    let { data, err } = await eventDal.getEventWithMember(eventId, userId);
     if (err) return next(err);
-    if (!data) return res.status(404).send("Not Found: event not found");
+    if (!data) return res.status(404).send("Not Found: no matching event found");
     return res.status(200).send(data);
   }
 );
 
 /* Add a location to event */
-router.post("/:eventId/location/suggest", ...sessionValidations, async (req, res, next) => {
-  // const userId = req.jwtData.userId;
-  // const { data, err } = await eventDal.call();
-  // if (err) next(err);
-  // if (!data) next("Database error");
-  return res.status(404).send("Not Implemented")
-});
+router.post("/:eventId/location/suggest", ...sessionValidations, validation.eventLocationSuggestion,
+  async (req, res, next) => {
+    const userId = req.jwtData.userId;
+    const eventId = req.params.eventId;
+    let { data, err } = await eventDal.getEventWithMember(eventId, userId);
+    if (err) return next(err);
+    if (!data) return res.status(404).send("Not Found: no matching event found");
+    return res.status(404).send("Not Implemented")
+  }
+);
 /* Change a vote on location */
-router.put("/:eventId/location/:location/vote", ...sessionValidations, async (req, res, next) => {
-  // const userId = req.jwtData.userId;
-  // const { data, err } = await eventDal.call();
-  // if (err) next(err);
-  // if (!data) next("Database error");
-  return res.status(404).send("Not Implemented")
-});
+router.put("/:eventId/location/:location/vote", ...sessionValidations,
+  async (req, res, next) => {
+    // const userId = req.jwtData.userId;
+    // const { data, err } = await eventDal.call();
+    // if (err) next(err);
+    // if (!data) next("Database error");
+    return res.status(404).send("Not Implemented")
+  });
 /* Get a decision */
-router.post("/:eventId/location/decision", ...sessionValidations, async (req, res, next) => {
-  // const userId = req.jwtData.userId;
-  // const { data, err } = await eventDal.call();
-  // if (err) next(err);
-  // if (!data) next("Database error");
-  return res.status(404).send("Not Implemented")
-});
+router.post("/:eventId/location/decision", ...sessionValidations,
+  async (req, res, next) => {
+    // const userId = req.jwtData.userId;
+    // const { data, err } = await eventDal.call();
+    // if (err) next(err);
+    // if (!data) next("Database error");
+    return res.status(404).send("Not Implemented")
+  });
 
 module.exports = router;

@@ -61,14 +61,24 @@ class EventDal {
       return { err: ex }
     }
   }
-  // TODO: update query to use propagation and lookup
-  async isMemberInEvent(eventId, userId) {
+  // Join with groups and check if userId is in the group 
+  async getEventWithMember(eventId, userId) {
     try {
       const db = await this._getCollection();
-      const result = await db.findOne({
-        eventId,
-        members: { $elemMatch: { $eq: userId } }
-      });
+      const cursor = db.aggregate([
+        { $match: { eventId } },
+        {
+          $lookup: {
+            from: "groups",
+            localField: "groupId",
+            foreignField: "groupId",
+            as: "groups"
+          }
+        },
+        { $match: { "groups.0.members": { $elemMatch: { $eq: userId } } } },
+        { $unset: "groups" }
+      ]);
+      const result = await cursor.next();
       if (result) return { data: new EventDto(result) };
       return { data: null };
     } catch (ex) {

@@ -25,8 +25,14 @@ function eventCreation(req, res, next) {
   return res.status(400).send("Bad Request: must provide name and groupId");
 }
 
+function eventLocationSuggestion(req, res, next) {
+  const { name } = req.body;
+  if (name) return next();
+  return res.status(400).send("Bad Request: must provide name");
+}
+
 module.exports = {
   userRegister, userLogin,
   groupCreation,
-  eventCreation
+  eventCreation, eventLocationSuggestion
 };
