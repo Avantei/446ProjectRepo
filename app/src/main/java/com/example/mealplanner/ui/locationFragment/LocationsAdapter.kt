@@ -40,7 +40,7 @@ class LocationsAdapter(private val viewModel: EventDetailViewModel) :
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         // Inflate the custom layout
-        val contactView = inflater.inflate(R.layout.location_list_item, parent, false)
+        val contactView = inflater.inflate(R.layout.item_location, parent, false)
         // Return a new holder instance
         return ViewHolder(contactView)
     }

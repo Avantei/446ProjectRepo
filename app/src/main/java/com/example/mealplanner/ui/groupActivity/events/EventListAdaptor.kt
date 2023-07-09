@@ -45,7 +45,7 @@ class EventListAdaptor(private val onClick: (Event) -> Unit) :
     // Called when a new item is created
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.groups_event_list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false)
         return ViewHolder(view, onClick)
     }
 
