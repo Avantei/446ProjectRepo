@@ -1,10 +1,12 @@
 package com.example.mealplanner.ui.eventDetailActivity
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mealplanner.R
+import com.example.mealplanner.ui.eventDetailActivity.TimePicker.TimePickerData
 import com.example.mealplanner.ui.locationFragment.LocationSuggestion
 
 
@@ -17,15 +19,11 @@ class EventDetailViewModel : ViewModel() {
     private val _locationList: MutableLiveData<List<LocationSuggestion>> = MutableLiveData(
         listOf()
     )
+    private val _availabilitiesList: MutableLiveData<List<TimePickerData>> = MutableLiveData( listOf() )
     val decisionName: LiveData<String> = _decisionName
     val decisionImageId: LiveData<Int> = _decisionImageId
     val locationList: LiveData<List<LocationSuggestion>> = _locationList
-    var availableDate: String? = null //dd/MM/yyyy
-        private set
-    var availableStartTime: String? = null //24h
-        private set
-    var availableEndTime: String? = null //24h
-        private set
+    val availabilitiesList: LiveData<List<TimePickerData>> = _availabilitiesList
 
     // Retrieve data on create
     init {
@@ -59,6 +57,24 @@ class EventDetailViewModel : ViewModel() {
         updateDecision()
     }
 
+    fun addAvailability(date: String, time: String) {
+        Log.d("TAG", "in add function: " + date + " " + time)
+        val newAvailability = TimePickerData(date, time)
+        val updatedList = _availabilitiesList.value?.toMutableList() ?: mutableListOf()
+        updatedList.add(newAvailability)
+        _availabilitiesList.value = updatedList
+
+//        for (a in _availabilitiesList.value ?: emptyList()) {
+//            // Access each availability object
+//            Log.d("list", "in add func: " + a.toString())
+//        }
+
+    }
+
+    fun submitAvailability() {
+        // send _availabilities_list to wherever needed
+    }
+
 
     companion object {
         val Factory = object : ViewModelProvider.Factory {
@@ -74,17 +90,6 @@ class EventDetailViewModel : ViewModel() {
         }
     }
 
-    fun setAvailableDate(AvailableDate: String) {
-        availableDate = AvailableDate
-    }
-
-    fun setAvailableStartTime(AvailableStartTime: String) {
-        availableStartTime = AvailableStartTime
-    }
-
-    fun setAvailableEndTime(AvailableEndTime: String) {
-        availableEndTime = AvailableEndTime
-    }
 
 
 }
