@@ -25,6 +25,9 @@
 | 2023/06/26 |          |   4   |     4      |           |          |        | Meeting + Completing code for demo         |
 | 2023/06/27 |          |       |     6      |           |          |        | Full group events activity UI code      |
 | 2023/06/29 |     6    |       |            |           |          |        | D3 status report, demo summary, arch diagram      |
+| 2023/07/03 |          |       |            |           |     3    |        | Time Picker Fragment Updates     |
+| 2023/07/08 |          |       |            |           |     4    |        | Time Picker Fragment Updates     |
+
 
 
 
