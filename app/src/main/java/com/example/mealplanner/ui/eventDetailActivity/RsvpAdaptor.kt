@@ -61,12 +61,12 @@ class RsvpListAdapter(private val onButtonClick: (RsvpGroupMember, String) -> Un
                 button.isVisible = false;
             } else {
                 //if member is attending
-                if (rsvpGroupMember.transport == Transport.DOES_NEED_RIDE) {
+                if (rsvpGroupMember.needsRide == true) {
                     //if member does need a ride
                     subTextView.text = "Need a Ride"
                     subTextView.setTextColor(Color.RED)
                     button.text = ("Give Ride")
-                    button.isVisible = userRsvpGroupMember.isAttending && userRsvpGroupMember.transport == Transport.DOES_NOT_NEED_RIDE
+                    button.isVisible = userRsvpGroupMember.isAttending && userRsvpGroupMember.needsRide == false
                 } else {
                     //either don't need a ride or riding with someone
                     Log.d("TODO", "bind() setting ride not needed")
@@ -89,7 +89,7 @@ class RsvpListAdapter(private val onButtonClick: (RsvpGroupMember, String) -> Un
             }
             if (listItemRepresentsCurrentUser) {
                 isAttendingCheckBox.isEnabled = true;
-                if (rsvpGroupMember.transport == Transport.DOES_NOT_NEED_RIDE) {
+                if (rsvpGroupMember.needsRide == false) {
                     button.text = "Need Ride"
                 } else {
                     button.text = "Got Ride"
@@ -122,7 +122,7 @@ object DiffCallback : DiffUtil.ItemCallback<RsvpGroupMember>() {
     override fun areContentsTheSame(oldItem: RsvpGroupMember, newItem: RsvpGroupMember): Boolean {
         return oldItem.name == newItem.name
                 && oldItem.isAttending == newItem.isAttending
-                && oldItem.transport == newItem.transport
+                && oldItem.needsRide == newItem.needsRide
                 && oldItem.ridingWith == newItem.ridingWith;
     }
 }

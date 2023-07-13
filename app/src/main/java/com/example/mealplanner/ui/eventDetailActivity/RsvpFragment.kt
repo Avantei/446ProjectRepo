@@ -72,7 +72,7 @@ class RsvpFragment : Fragment() {
         for (member in this.rsvpGroupMembers) {
             if (member.ridingWith == rsvpGroupMember.name) {
                 member.ridingWith = ""
-                member.transport = Transport.DOES_NEED_RIDE
+                member.needsRide = true
             }
         }
         recyclerView.adapter!!.notifyDataSetChanged()
@@ -83,20 +83,14 @@ class RsvpFragment : Fragment() {
         val isCurrentUserButtonClick = (rsvpGroupMember.name == currentUserName)
         if (isCurrentUserButtonClick) {
             //"need ride" or "got ride" button clicked => toggle transport
-            if (rsvpGroupMember.transport == Transport.DOES_NEED_RIDE) {
-                //"got ride" button clicked
-                rsvpGroupMember.transport = Transport.DOES_NOT_NEED_RIDE
-            } else if (rsvpGroupMember.transport == Transport.DOES_NOT_NEED_RIDE) {
-                //"need ride" button clicked
-                rsvpGroupMember.transport = Transport.DOES_NEED_RIDE
-            }
+            rsvpGroupMember.needsRide = !rsvpGroupMember.needsRide
 
             // only if the button we're clicking is the current user
             // case when we offered a ride, but now are saying that we ourselves need a ride before rescinding our offer
             for (member in this.rsvpGroupMembers) {
                 if (member.ridingWith == currentUserName) {
                     member.ridingWith = ""
-                    member.transport = Transport.DOES_NEED_RIDE
+                    member.needsRide = true
                 }
             }
             recyclerView.adapter!!.notifyDataSetChanged()
@@ -105,10 +99,10 @@ class RsvpFragment : Fragment() {
             // or rescinding a given ride
             if (rsvpGroupMember.ridingWith == currentUserName) {
                 //we're now rescinding an offered ride
-                rsvpGroupMember.transport = Transport.DOES_NEED_RIDE
+                rsvpGroupMember.needsRide = true
                 rsvpGroupMember.ridingWith = ""
             } else {
-                rsvpGroupMember.transport = Transport.DOES_NOT_NEED_RIDE
+                rsvpGroupMember.needsRide = false
                 rsvpGroupMember.ridingWith = currentUserName
             }
         }
