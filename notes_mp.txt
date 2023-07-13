@@ -1,0 +1,10 @@
+- grid layout isn't gonna work, that's for repeating the same element in a grid
+- table layout might work but doing it dynamically might be tricky
+
+implementation:
+1. use layout weight to create two columns on the right, and the rest of the space for the name column
+2. 'owed', 'paid', and the editable first row of the table can be created in the fragment xml file
+  2a. the first row (of current user data) would be populated when we fetch that data from the repo/viewmodel (lifecycle listener)
+3. the rest of the rows would be a recycler view that lets us scroll through the other group members
+
+- the grid lines from the mockup might need to be added separately to make it look more like a grid

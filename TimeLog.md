@@ -32,6 +32,7 @@
 | 2023/07/08 |          |       |            | 2         |          |        | meeting + Writing D4 deliverable             |
 | 2023/07/12 |          |       |            | 2         |          |        | rsvp fragment                                |
 | 2023/07/13 |          |       |            | 5         |          |        | completed rsvp fragment                      |
+| 2023/07/13 |          |       |            | 1         |          |        | investigating grid implementation for bills  |
 
 
 
