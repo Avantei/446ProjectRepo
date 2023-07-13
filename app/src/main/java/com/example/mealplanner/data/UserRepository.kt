@@ -1,11 +1,13 @@
 package com.example.mealplanner.data
 
 import com.example.mealplanner.mock.MockUserSource
+import com.example.mealplanner.ui.eventDetailActivity.RsvpGroupMember
 import com.example.mealplanner.ui.groupActivity.events.Event
 
 class UserRepository {
     private lateinit var groups: MutableList<String>
     private lateinit var groupMembers: MutableList<String>
+    private lateinit var rsvpGroupMembers: MutableList<RsvpGroupMember>
     private lateinit var events: MutableList<Event>
     private lateinit var username: String
     private var isVegetarian = false
@@ -32,6 +34,10 @@ class UserRepository {
         return groupMembers.toList()
     }
 
+    fun getRsvpGroupMembers(): List<RsvpGroupMember>? {
+        return rsvpGroupMembers.toList()
+    }
+
     fun addEvent(name: String, time: String, location: String): Boolean {
         events.add(Event(name, time, location))
         // Todo validation checks on event being added
@@ -56,6 +62,8 @@ class UserRepository {
         groups = ds.getGroups().toMutableList()
         groupMembers = ds.getGroupMembers(null).toMutableList()
         events = ds.getEvents().toMutableList()
+
+        rsvpGroupMembers = ds.getRsvpGroupMembers().toMutableList()
 
         isVegetarian = ds.getIsVegetarian()
         isVegan = ds.getIsVegan()

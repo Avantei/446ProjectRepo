@@ -29,7 +29,7 @@ class EventPagerAdapter(private val context: Context, fa: FragmentActivity) :
         return when (position) {
             0 -> TimePickerFragment()
             1 -> LocationFragment()
-            2 -> DecisionFragment() // TODO: replace with RSVP fragment
+            2 -> RsvpFragment()
             3 -> DecisionFragment() // TODO: replace with Location fragment
             4 -> DecisionFragment()
             else -> DecisionFragment()
