@@ -37,13 +37,18 @@ class EventDetailViewModel : ViewModel() {
         _decisionName.value = "placeholder"
         _decisionImageId.value = R.drawable.default_restaurant_image
         getRsvpGroupMembers()
-        Log.d("TODO", "init rsvpGroupMembers:")
-        rsvpGroupMembers.value?.forEach { member -> Log.d("TODO", "init rsvpGroupMember - ${member.name}")}
     }
 
     private fun getRsvpGroupMembers() {
+        //TODO: when getting real data from repo, also query current user id, then sort the list so current user is element 0
         val result = repo.getRsvpGroupMembers()
         this._rsvpGroupMembers.value = result
+    }
+
+    private fun getCurrentUserRsvpGroupMemberObject() {
+        val result = this._rsvpGroupMembers.value?.get(0)
+
+
     }
 
     private fun updateDecision() {

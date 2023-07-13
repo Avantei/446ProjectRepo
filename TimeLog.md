@@ -1,6 +1,6 @@
-| Date      | *Justin* | *Max* | *Jaspreet* | *Matthew* | *Marwan* | *Peter* | Task                                         |
-| --------- |----------| ----- | ---------- | --------- | -------- | ------- |----------------------------------------------|
-| 2023/05/26 | 2        |   2   |      2     |    2      |    2     | 2       | Meeting for proposal                         |
+| Date       | *Justin* | *Max* | *Jaspreet* | *Matthew* | *Marwan* | *Peter* | Task                                         |
+|------------|----------| ----- | ---------- |-----------| -------- | ------- |----------------------------------------------|
+| 2023/05/26 | 2        |   2   |      2     | 2         |    2     | 2       | Meeting for proposal                         |
 | 2023/05/28 |          |   2   |            |           |          |         | Making Figma Mockups                         |
 | 2023/05/28 | 2        |       |      3     |           |          |         | Writing deliverable 1                        |
 | 2023/05/31 |          |       |            |           |     2    |         | Functional properties + user scenerios       |
@@ -29,8 +29,9 @@
 | 2023/06/29 | 6        |       |            |           |          |        | D3 status report, demo summary, arch diagram |
 | 2023/07/03 |          |       |            |           |     3    |        | Time Picker Fragment Updates                 |
 | 2023/07/08 |          |       |            |           |     4    |        | Time Picker Fragment Updates                 |
-| 2023/07/08 |          |       |            |  2        |          |        | meeting + Writing D4 deliverable             |
-| 2023/07/12 |          |       |            |  2        |          |        | rsvp fragment                                |
+| 2023/07/08 |          |       |            | 2         |          |        | meeting + Writing D4 deliverable             |
+| 2023/07/12 |          |       |            | 2         |          |        | rsvp fragment                                |
+| 2023/07/13 |          |       |            | 5         |          |        | completed rsvp fragment                      |
 
 
 

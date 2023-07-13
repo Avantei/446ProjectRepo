@@ -11,12 +11,12 @@ class MockUserSource {
     Event("Breakfast", "Thursday, June 29, 2023", "Tim Hortons"))
     fun getGroupMembers(groupName: String?) = listOf("Max", "Peter", "Jas", "Justin", "Matt", "Marwan")
     fun getRsvpGroupMembers() = listOf(
-        RsvpGroupMember("Matt", false, Transport.NOT_APPLICABLE, null),
-        RsvpGroupMember("Max", false, Transport.NOT_APPLICABLE, null),
-        RsvpGroupMember("Marwan", false, Transport.NOT_APPLICABLE, null),
-        RsvpGroupMember("Peter", false, Transport.NOT_APPLICABLE, null),
-        RsvpGroupMember("Jas", false, Transport.NOT_APPLICABLE, null),
-        RsvpGroupMember("Justin", false, Transport.NOT_APPLICABLE, null),
+        RsvpGroupMember("Matt", false, Transport.DOES_NOT_NEED_RIDE, ""),
+        RsvpGroupMember("Max", true, Transport.DOES_NOT_NEED_RIDE, ""),
+        RsvpGroupMember("Marwan", false, Transport.NOT_APPLICABLE, ""),
+        RsvpGroupMember("Peter", true, Transport.DOES_NEED_RIDE, ""),
+        RsvpGroupMember("Jas", false, Transport.NOT_APPLICABLE, ""),
+        RsvpGroupMember("Justin", true, Transport.DOES_NEED_RIDE, ""),
     )
     fun getUsername() = _username
     fun getIsVegetarian() = false
