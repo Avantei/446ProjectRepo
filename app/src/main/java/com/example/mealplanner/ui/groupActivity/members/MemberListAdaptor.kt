@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -37,7 +36,7 @@ class MemberListAdaptor(private val onClick: (String) -> Unit) :
     // Called when a new item is created
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.group_member_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_group_member, parent, false)
         return ViewHolder(view, onClick)
     }
 
