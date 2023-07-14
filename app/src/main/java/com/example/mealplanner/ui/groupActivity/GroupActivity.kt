@@ -7,31 +7,32 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.example.mealplanner.R
 import com.example.mealplanner.databinding.ActivityGroupBinding
+import com.example.mealplanner.ui.userActivity.UserPagerAdapter
+import com.google.android.material.tabs.TabLayout
 
 class GroupActivity : AppCompatActivity() {
 
+    // private lateinit var viewModel: GroupViewModel
     private lateinit var binding: ActivityGroupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Create ViewModel
+        // viewModel = ViewModelProvider(this, UserViewModel.Factory)[UserViewModel::class.java]
+
+        // Inflate
         binding = ActivityGroupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
-
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_events, R.id.navigation_members, R.id.navigation_bills
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        // Set up and connect pager with tabs
+        val pagerAdapter = GroupPagerAdapter(this, this)
+        val viewPager: ViewPager2 = binding.viewPager
+        val tabs: TabLayout = binding.tabs
+        viewPager.adapter = pagerAdapter
+        pagerAdapter.attachMediator(tabs, viewPager)
     }
 }
